@@ -7,7 +7,7 @@ def register():
     register_window = tk.Toplevel(root)
     register_window.title("Регистрация")
     register_window.geometry("300x200")
-    # Заблокировать другие окна
+    
     register_window.grab_set()
 
     label_username = tk.Label(register_window, text="Имя пользователя:")
