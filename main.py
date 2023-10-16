@@ -1,11 +1,14 @@
 import tkinter as tk
 from tkinter import messagebox
-from PIL import Image, ImageTk
 
 def register():
+    root.withdraw()
+
     register_window = tk.Toplevel(root)
     register_window.title("Регистрация")
     register_window.geometry("300x200")
+    # Заблокировать другие окна
+    register_window.grab_set()
 
     label_username = tk.Label(register_window, text="Имя пользователя:")
     entry_username = tk.Entry(register_window)
@@ -45,9 +48,10 @@ def register():
 
         messagebox.showinfo("Успех", "Регистрация успешна!")
         register_window.destroy()
+        # Разблокировать основное окно
+        root.deiconify()
 
     button_register = tk.Button(register_window, text="Зарегистрироваться", command=do_register)
-
     label_username.pack()
     entry_username.pack()
     label_password.pack()
@@ -105,10 +109,12 @@ entry_password = tk.Entry(root, show="*")
 
 button_login = tk.Button(root, text="Войти", command=login)
 button_register = tk.Button(root, text="Зарегистрироваться", command=register)
+
 label_username.pack()
 entry_username.pack()
 label_password.pack()
 entry_password.pack()
 button_login.pack()
 button_register.pack()
+
 root.mainloop()
